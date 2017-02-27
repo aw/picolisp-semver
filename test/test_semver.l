@@ -2,7 +2,22 @@
 
 [de test-internal-cmp ()
   (assert-nil (<=> 1 2) "Ensure (a < b = NIL)")
-  (assert-equal 0  (<=> 2 2) "Ensure (a = b = 0)")
+  (assert-equal 0 (<=> 2 2) "Ensure (a = b = 0)")
+  (assert-t (<=> 3 2) "Ensure (a > b = T)") ]
+
+[de test-internal-cmp-versions ()
+  (assert-nil (cmp-versions (0 4 0) (1 4 2)) "[versions] Ensure (a < b = NIL)")
+  (assert-equal 0 (cmp-versions (1 4 2) (1 4 2)) "[versions] Ensure (a = b = 0)")
+  (assert-t (cmp-versions (1 5 2) (1 4 2)) "[versions] Ensure (a > b = T)") ]
+
+[de test-internal-cmp-lists ()
+  (assert-nil (cmp-lists '(NIL T 0)) "[lists] Ensure (a < b = NIL)")
+  (assert-equal 0 (cmp-lists '(0 0 0)) "[lists] Ensure (a = b = 0)")
+  (assert-t (cmp-lists '(T T 0)) "[lists] Ensure (a > b = T)") ]
+
+[de test-internal-cmp ()
+  (assert-nil (<=> 1 2) "Ensure (a < b = NIL)")
+  (assert-equal 0 (<=> 2 2) "Ensure (a = b = 0)")
   (assert-t (<=> 3 2) "Ensure (a > b = T)") ]
 
 [de test-semver-format ()
@@ -16,20 +31,22 @@
   (prinl "^J  Testing SemVer^J")
 
   '(test-internal-cmp)
+  '(test-internal-cmp-versions)
+  '(test-internal-cmp-lists)
   '(test-semver-format)
   '(test-semver-cmp)
-  '(assert-nil (semver-compare-slow "1.4.0" "1.4.2") "Is 1.4.0 < 1.4.2 ? (slow)")
-  '(assert-nil (semver-compare-slow "1.3.0" "1.4.2") "Is 1.3.0 < 1.4.2 ? (slow)")
-  '(assert-nil (semver-compare-slow "0.4.0" "1.4.2") "Is 0.4.0 < 1.4.2 ? (slow)")
-  '(assert-t   (semver-compare-slow "1.4.3" "1.4.2") "Is 1.4.4 > 1.4.2 ? (slow)")
-  '(assert-t   (semver-compare-slow "1.5.2" "1.4.2") "Is 1.5.2 > 1.4.2 ? (slow)")
-  '(assert-t   (semver-compare-slow "2.4.2" "1.4.2") "Is 2.4.2 > 1.4.2 ? (slow)")
-  '(assert-equal 0 (semver-compare-slow "1.4.2" "1.4.2") "Is 1.4.2 = 1.4.2 ? (slow)")
-  '(assert-nil (semver-compare "1.4.0" "1.4.2") "Is 1.4.0 < 1.4.2 ?")
-  '(assert-nil (semver-compare "1.3.0" "1.4.2") "Is 1.3.0 < 1.4.2 ?")
-  '(assert-nil (semver-compare "0.4.0" "1.4.2") "Is 0.4.0 < 1.4.2 ?")
-  '(assert-t   (semver-compare "1.4.3" "1.4.2") "Is 1.4.4 > 1.4.2 ?")
-  '(assert-t   (semver-compare "1.5.2" "1.4.2") "Is 1.5.2 > 1.4.2 ?")
-  '(assert-t   (semver-compare "2.4.2" "1.4.2") "Is 2.4.2 > 1.4.2 ?")
-  '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "Is 1.4.2 = 1.4.2 ?")
+  '(assert-nil (semver-compare-slow "1.4.0" "1.4.2") "[slow] Is 1.4.0 < 1.4.2 ?")
+  '(assert-nil (semver-compare-slow "1.3.0" "1.4.2") "[slow] Is 1.3.0 < 1.4.2 ?")
+  '(assert-nil (semver-compare-slow "0.4.0" "1.4.2") "[slow] Is 0.4.0 < 1.4.2 ?")
+  '(assert-t   (semver-compare-slow "1.4.3" "1.4.2") "[slow] Is 1.4.4 > 1.4.2 ?")
+  '(assert-t   (semver-compare-slow "1.5.2" "1.4.2") "[slow] Is 1.5.2 > 1.4.2 ?")
+  '(assert-t   (semver-compare-slow "2.4.2" "1.4.2") "[slow] Is 2.4.2 > 1.4.2 ?")
+  '(assert-equal 0 (semver-compare-slow "1.4.2" "1.4.2") "[slow] Is 1.4.2 = 1.4.2 ?")
+  '(assert-nil (semver-compare "1.4.0" "1.4.2") "[fast] Is 1.4.0 < 1.4.2 ?")
+  '(assert-nil (semver-compare "1.3.0" "1.4.2") "[fast] Is 1.3.0 < 1.4.2 ?")
+  '(assert-nil (semver-compare "0.4.0" "1.4.2") "[fast] Is 0.4.0 < 1.4.2 ?")
+  '(assert-t   (semver-compare "1.4.3" "1.4.2") "[fast] Is 1.4.4 > 1.4.2 ?")
+  '(assert-t   (semver-compare "1.5.2" "1.4.2") "[fast] Is 1.5.2 > 1.4.2 ?")
+  '(assert-t   (semver-compare "2.4.2" "1.4.2") "[fast] Is 2.4.2 > 1.4.2 ?")
+  '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "[fast] Is 1.4.2 = 1.4.2 ?")
   ]

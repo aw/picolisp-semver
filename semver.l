@@ -21,6 +21,16 @@
     ((= A B) 0)
     ((> A B) T) ]
 
+[de cmp-versions (V1 V2)
+  (cond
+    ((and (= (car V1) (car V2)) (= (cadr V1) (cadr V2)) (= (caddr V1) (caddr V2))) 0)
+    ((or  (> (car V1) (car V2)) (> (cadr V1) (cadr V2)) (> (caddr V1) (caddr V2))) T) ]
+
+[de cmp-lists (R)
+  (cond
+    ((and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R))) 0)
+    ((and (car R) (cadr R) (caddr R)) T) ]
+
 ### public
 
 [de semver-cmp (V1 V2)
@@ -37,12 +47,8 @@
     (setq V1 (semver-format A)
           V2 (semver-format B) )
 
-    (cond
-      ((and (= (car V1) (car V2)) (= (cadr V1) (cadr V2)) (= (caddr V1) (caddr V2))) 0)
-      ((or  (> (car V1) (car V2)) (> (cadr V1) (cadr V2)) (> (caddr V1) (caddr V2))) T) ]
+    (cmp-versions V1 V2) ]
 
 [de semver-compare-slow (A B)
   (let R (semver-cmp (semver-format A) (semver-format B))
-    (cond
-      ((and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R))) 0)
-      ((and (car R) (cadr R) (caddr R)) T) ]
+    (cmp-lists R) ]

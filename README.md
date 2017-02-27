@@ -16,7 +16,7 @@ It ignores pre-release, build, metadata, and special extensions (ex: `.alpha.1`)
 # Usage
 
   * Include `semver.l` in your application: `(load "semver.l")`
-  * Use one of the 3 public functions listed below
+  * Use one of the 4 public functions listed below
 
 | Function | Description | Returns | Example |
 | :---- | :---- | :---- | :---- |
