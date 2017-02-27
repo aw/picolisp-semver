@@ -1,5 +1,7 @@
 #!/usr/bin/env pil
 
+(when symbols (symbols 'unit 'pico))
+
 (load (pack (car (file)) ".modules/picolisp-unit/HEAD/unit.l"))
 
 (chdir (pack (car (file)) "test/")
