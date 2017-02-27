@@ -8,4 +8,5 @@ before_script:
   - cd /tmp/picoLisp/src64 && make
 
 script:
+  - export PATH=$PATH:/tmp/picoLisp
   - cd ${TRAVIS_BUILD_DIR} && make check
