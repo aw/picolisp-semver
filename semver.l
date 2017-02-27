@@ -52,3 +52,8 @@
 [de semver-compare-slow (A B)
   (let R (semver-cmp (semver-format A) (semver-format B))
     (cmp-lists R) ]
+
+[de semver-sort (L Strings)
+  (if (=T Strings)
+      (mapcar '((S) (glue "." S)) (by cmp-versions sort (mapcar semver-format L)))
+      (by cmp-versions sort (mapcar semver-format L)) ]

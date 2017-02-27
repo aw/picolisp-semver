@@ -49,4 +49,6 @@
   '(assert-t   (semver-compare "1.5.2" "1.4.2") "[fast] Is 1.5.2 > 1.4.2 ?")
   '(assert-t   (semver-compare "2.4.2" "1.4.2") "[fast] Is 2.4.2 > 1.4.2 ?")
   '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "[fast] Is 1.4.2 = 1.4.2 ?")
+  '(assert-equal '((1 3 0) (1 4 0) (1 6 0)) (semver-sort '("1.4.0" "1.6.0" "1.3.0")) "[integers] Sort a list of version strings")
+  '(assert-equal '("1.3.0" "1.4.0" "1.6.0") (semver-sort '("1.4.0" "1.6.0" "1.3.0") T) "[strings] Sort a list of version strings")
   ]
