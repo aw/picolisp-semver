@@ -7,6 +7,8 @@
 This library can validate and compare **Major.Minor.Patch** versions (ex: `"1.0.0"`).
 It ignores pre-release, build, metadata, and special extensions (ex: `.alpha.1`).
 
+![SemVer PicoLisp test output](https://cloud.githubusercontent.com/assets/153401/23361966/4f36d7e0-fceb-11e6-862a-60a7643d5a56.png)
+
 # Requirements
 
   * PicoLisp 32-bit or 64-bit v16.12+
