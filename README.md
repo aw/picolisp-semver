@@ -11,7 +11,7 @@ It ignores pre-release, build, metadata, and special extensions (ex: `.alpha.1`)
 
 # Requirements
 
-  * PicoLisp 32-bit or 64-bit v16.12+
+  * [PicoLisp](http://picolisp.com) 32-bit or 64-bit v16.12+
 
 # Usage
 
