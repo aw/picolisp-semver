@@ -31,6 +31,9 @@
     ((and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R))) 0)
     ((and (car R) (cadr R) (caddr R)) T) ]
 
+[de sort-versions (L)
+  (by cmp-versions sort (mapcar semver-format L)) ]
+
 ### public
 
 [de semver-cmp (V1 V2)
@@ -54,6 +57,7 @@
     (cmp-lists R) ]
 
 [de semver-sort (L Strings)
-  (if (=T Strings)
-      (mapcar '((S) (glue "." S)) (by cmp-versions sort (mapcar semver-format L)))
-      (by cmp-versions sort (mapcar semver-format L)) ]
+  (let V (sort-versions L)
+    (if (=T Strings)
+        (mapcar '((S) (glue "." S)) V)
+        V ]
