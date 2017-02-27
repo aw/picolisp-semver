@@ -4,7 +4,8 @@
 #
 # Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
-(local MODULE_INFO <=> semver-cmp semver-format semver-compare semver-compare-slow)
+(local MODULE_INFO <=> cmp-versions cmp-lists sort-versions)
+(local semver-cmp semver-format semver-compare semver-compare-slow semver-sort)
 
 (load (pack (car (file)) "module.l"))
 
