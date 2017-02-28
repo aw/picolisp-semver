@@ -50,10 +50,8 @@
   (mapcar format (mapcan '((S) (split S "-")) (split (chop Version) "."))) ]
 
 [de semver-compare (A B)
-  (use (V1 V2)
-    (setq V1 (semver-format A)
-          V2 (semver-format B) )
-
+  (let (V1 (semver-format A)
+        V2 (semver-format B) )
     (cmp-versions V1 V2) ]
 
 [de semver-compare-slow (A B)
