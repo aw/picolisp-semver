@@ -22,7 +22,7 @@
 
 [de test-semver-format ()
   (assert-equal (1 4 2) (semver-format "1.4.2") "Convert a version string to a list")
-  (assert-equal (1 4 2 NIL) (semver-format "1.4.2-alpha1") "Drop special version extensions") ]
+  (assert-equal (1 4 2) (semver-format "1.4.2-alpha1") "Drop special version extensions") ]
 
 [de test-semver-cmp ()
   (assert-equal (0 T NIL) (semver-cmp (1 4 0) (1 3 2)) "Compare two version lists") ]
