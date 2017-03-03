@@ -5,7 +5,7 @@
 [SemVer 2.0.0](http://semver.org) library for PicoLisp
 
 This library can validate and compare **Major.Minor.Patch** versions (ex: `"1.0.0"`).
-It ignores pre-release, build, metadata, and special extensions (ex: `.alpha.1`).
+It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 
 ![SemVer PicoLisp test output](https://cloud.githubusercontent.com/assets/153401/23364395/ceda769a-fcf6-11e6-9bf6-b7b0b8187f61.png)
 
@@ -82,10 +82,10 @@ if left > right then return  T # left is newer
 ```
 (load "semver.l")
 
-(semver-sort '("1.4.0" "1.6.0" "1.3.0"))
--> ((1 3 0) (1 4 0) (1 6 0))
-(semver-sort '("1.4.0" "1.6.0" "1.3.0") T)
--> ("1.3.0" "1.4.0" "1.6.0")
+(semver-sort '("1.4.0" "1.6.0" "1.3.0" "1.4.0-alpha"))
+-> ((1 3 0) (1 4 0) (1 4 0) (1 6 0))
+(semver-sort '("1.4.0" "1.6.0" "1.3.0" "1.4.0-alpha") T)
+-> ("1.3.0" "1.4.0" "1.4.0" "1.6.0")
 ```
 
 # Testing
