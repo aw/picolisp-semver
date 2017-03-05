@@ -31,7 +31,9 @@
 [de cmp-lists (R)
   (cond
     ((and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R))) 0)
-    ((and (car R) (cadr R) (caddr R)) T) ]
+    ((=T (car R)) T)
+    ((and (car R) (=T (cadr R))) T)
+    ((and (car R) (cadr R) (=T (caddr R))) T) ]
 
 [de sort-versions (L)
   (by cmp-versions sort L) ]
