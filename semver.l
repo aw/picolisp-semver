@@ -29,11 +29,10 @@
     (<=> (caddr V1) (caddr V2)) ]
 
 [de cmp-lists (R)
-  (cond
-    ((=T (car R)) T)
-    ((and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R))) 0)
-    ((and (car R) (=T (cadr R))) T)
-    ((and (car R) (cadr R) (=T (caddr R))) T) ]
+  (or (=T (car R))
+      (and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R)))
+      (and (car R) (=T (cadr R)))
+      (and (car R) (cadr R) (=T (caddr R))) ]
 
 [de sort-versions (L)
   (by cmp-versions sort L) ]
