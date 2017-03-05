@@ -34,6 +34,11 @@
       (and (car R) (=T (cadr R)))
       (and (car R) (cadr R) (=T (caddr R))) ]
 
+[de cmp-range (A B Min Max)
+  (or (nor Min Max)
+      (and A (not B))
+      (and A (not Max)) ]
+
 [de sort-versions (L)
   (by cmp-versions sort L) ]
 
@@ -63,9 +68,10 @@
         (mapcar to-string V)
         V ]
 
-[de semver-satisfies (V Min Max)
-  (when V
-    (cond
-      ((nor Min Max) T)
-      ((and (semver-compare V Min) (not (semver-compare V Max))) T)
-      ((and (semver-compare V Min) (not Max)) T) ]
+[de semver-satisfies (Ver Min Max)
+  (when Ver
+    (let (V (semver-format Ver)
+          A (cmp-lists (cmp-versions V (semver-format Min)))
+          B (cmp-lists (cmp-versions V (semver-format Max))) )
+
+    (cmp-range A B Min Max) ]
