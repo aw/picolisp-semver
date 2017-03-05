@@ -70,7 +70,6 @@
 [de semver-satisfies (Ver Min Max)
   (when Ver
     (or (nor Min Max)
-        (let (V (semver-format Ver)
-              A (cmp-lists (cmp-versions V (semver-format Min)))
-              B (cmp-lists (cmp-versions V (semver-format Max))) )
+        (let (A (semver-compare Ver Min)
+              B (semver-compare Ver Max) )
           (cmp-range A B Max) ]
