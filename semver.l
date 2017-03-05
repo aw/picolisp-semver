@@ -73,5 +73,4 @@
     (let (V (semver-format Ver)
           A (cmp-lists (cmp-versions V (semver-format Min)))
           B (cmp-lists (cmp-versions V (semver-format Max))) )
-
-    (cmp-range A B Min Max) ]
+      (cmp-range A B Min Max) ]
