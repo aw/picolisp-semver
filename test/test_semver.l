@@ -21,6 +21,9 @@
 [de test-internal-to-string ()
   (assert-equal "1.4.2" (to-string (1 4 2)) "Convert an integer list to a string") ]
 
+[de test-internal-to-version ()
+  (assert-equal '(("1") ("4") ("2") ("a" "l" "p" "h" "a" "1")) (to-version "1.4.2-alpha1") "Convert a string to an integer list") ]
+
 [de test-semver-format ()
   (assert-equal (1 4 2) (semver-format "1.4.2") "Convert a version string to a list")
   (assert-equal (1 4 2) (semver-format "1.4.2-alpha1") "Drop special version extensions") ]
@@ -36,6 +39,7 @@
   '(test-internal-cmp-lists)
   '(test-internal-sort-versions)
   '(test-internal-to-string)
+  '(test-internal-to-version)
   '(test-semver-format)
   '(test-semver-cmp)
   '(assert-nil (semver-compare-slow "1.4.0" "1.4.2") "[slow] Is 1.4.0 < 1.4.2 ?")

@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
-(local MODULE_INFO <=> cmp-versions cmp-lists sort-versions to-string)
+(local MODULE_INFO <=> cmp-versions cmp-lists sort-versions to-string to-version)
 (local semver-cmp semver-format semver-compare semver-compare-slow semver-sort)
 
 (load (pack (car (file)) "module.l"))
@@ -38,6 +38,9 @@
 [de to-string (L)
   (glue "." L) ]
 
+[de to-version (S)
+  (split (chop S) '. '-) ]
+
 ### public
 
 [de semver-cmp (V1 V2)
@@ -46,8 +49,8 @@
     (<=> (cadr V1) (cadr V2))
     (<=> (caddr V1) (caddr V2)) ]
 
-[de semver-format (Version)
-  (mapcar format (head 3 (split (chop Version) '. '-))) ]
+[de semver-format (S)
+  (mapcar format (head 3 (to-version S))) ]
 
 [de semver-compare (A B)
   (let (V1 (semver-format A)
