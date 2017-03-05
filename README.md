@@ -24,6 +24,7 @@ It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 | `semver-cmp` | Compares two lists of integers | List containing NIL, 0 or T | `(NIL 0 T)` |
 | `semver-compare` | Compares two version strings using the spaceship `<=>` | NIL, 0, or T | `T` |
 | `semver-sort` | Sorts a list of version strings | List of integers or strings | `((1 3 0) (1 4 0) (1 6 0))` or `("1.3.0" "1.4.0" "1.6.0")` |
+| `semver-satisfies` | Returns whether a version is satisfied by a range | NIL or T | `NIL` or `T` |
 
 Version comparison is always from left to right.
 
@@ -85,6 +86,50 @@ if left > right then return  T # left is newer
 -> ((1 3 0) (1 4 0) (1 4 0) (1 6 0))
 (semver-sort '("1.4.0" "1.6.0" "1.3.0" "1.4.0-alpha") T)
 -> ("1.3.0" "1.4.0" "1.4.0" "1.6.0")
+```
+
+### 5. Satisfies a range
+
+**Arguments:**
+
+  * The `first` argument is the version
+  * The `second` argument is the minimum version: must be `>=` (greater than or equal)
+  * The `third` argument is the maximum version: must be `<` (less than)
+
+**Notes:**
+
+  * If no argument is supplied, `NIL` is returned
+  * If the `first` argument is `NIL`, `NIL` is returned
+  * If only the `first` argument is supplied, `T` is returned
+  * If the `third` argument is `NIL`, only the minimum `>=` is compared
+  * If the `second` argument is `NIL`, but the `third` is supplied, only the maximum `<` is compared
+
+```
+(load "semver.l")
+
+(semver-satisfies)
+-> NIL
+(semver-satisfies NIL NIL "3.0.0")
+-> NIL
+(semver-satisfies "2.0.0")
+-> T
+(semver-satisfies "2.0.0" "1.0.0")
+-> T
+(semver-satisfies "2.0.0" NIL "1.0.0")
+-> NIL
+(semver-satisfies "2.0.0" NIL "3.0.0")
+-> T
+
+(semver-satisfies "1.0.0" "1.0.0" "2.0.0")
+-> T
+(semver-satisfies "1.6.0" "1.0.0" "2.0.0")
+-> T
+(semver-satisfies "3.0.0" "1.0.0" "2.0.0")
+-> NIL
+(semver-satisfies "0.9.0" "1.0.0" "2.0.0")
+-> NIL
+(semver-satisfies "2.0.0" "1.0.0" "2.0.0")
+-> NIL
 ```
 
 # Testing

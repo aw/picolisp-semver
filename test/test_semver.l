@@ -50,5 +50,22 @@
   '(assert-t   (semver-compare "2.4.2" "1.4.2") "Is 2.4.2 > 1.4.2 ?")
   '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "Is 1.4.2 = 1.4.2 ?")
   '(assert-equal '((1 3 0) (1 4 0) (1 6 0)) (semver-sort '("1.4.0" "1.6.0" "1.3.0")) "[integers] Sort a list of version strings")
-  '(assert-equal '("1.3.0" "1.4.0" "1.6.0") (semver-sort '("1.4.0" "1.6.0" "1.3.0") T) "[strings] Sort a list of version strings")
+  '(assert-equal '("1.3.0" "1.4.0" "1.6.0") (semver-sort '("1.4.0" "1.6.0" "1.3.0") T) "[strings] Sort a list of version strings") ]
+
+[execute
+  '(assert-nil (semver-satisfies) "[satisfies] Is nothing not nothing ?")
+  '(assert-nil (semver-satisfies NIL "1.0.0" "1.3.0") "[satisfies] Is there nothing to compare ?")
+  '(assert-t   (semver-satisfies "2.0.0") "[satisfies] Is 2.0.0 something ?")
+  '(assert-t   (semver-satisfies "2.0.0" "1.0.0") "[satisfies] Is 2.0.0 >= 1.0.0 ?")
+  '(assert-t   (semver-satisfies "2.0.0" "2.0.0") "[satisfies] Is 2.0.0 >= 2.0.0 ?")
+  '(assert-t   (semver-satisfies "2.0.0" "1.0.0" "3.0.0") "[satisfies] Is 2.0.0 >= 1.0.0 and < 3.0.0 ?")
+  '(assert-t   (semver-satisfies "2.0.0" "1.0.0" "2.0.1") "[satisfies] Is 2.0.0 >= 1.0.0 and < 2.0.1 ?")
+  '(assert-t   (semver-satisfies "2.0.0" "2.0.0" "4.0.0") "[satisfies] Is 2.0.0 >= 2.0.0 and < 4.0.0 ?")
+  '(assert-t   (semver-satisfies "2.0.0" NIL "4.0.0") "[satisfies] Is 2.0.0 < 4.0.0 ?")
+  '(assert-nil (semver-satisfies "0.9.0" "1.0.0") "[satisfies] Is 0.9.0 not >= 1.0.0 ?")
+  '(assert-nil (semver-satisfies "0.9.0" "1.0.0" "3.0.0") "[satisfies] Is 0.9.0 not >= 1.0.0 and < 3.0.0 ?")
+  '(assert-nil (semver-satisfies "2.3.0" "1.0.0" "2.0.1") "[satisfies] Is 2.3.0 not >= 1.0.0 and < 2.0.1 ?")
+  '(assert-nil (semver-satisfies "4.0.0" "2.0.0" "4.0.0") "[satisfies] Is 4.0.0 not >= 2.0.0 and < 4.0.0 ?")
+  '(assert-nil (semver-satisfies "5.0.0" "2.0.0" "4.0.0") "[satisfies] Is 5.0.0 not >= 2.0.0 and < 4.0.0 ?")
+  '(assert-nil (semver-satisfies "2.0.0" NIL "1.0.0") "[satisfies] Is 2.0.0 not < 1.0.0 ?")
   ]

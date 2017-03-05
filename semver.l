@@ -63,3 +63,10 @@
     (if S?
         (mapcar to-string V)
         V ]
+
+[de semver-satisfies (V Min Max)
+  (when V
+    (cond
+      ((nor Min Max) T)
+      ((and (semver-compare V Min) (not (semver-compare V Max))) T)
+      ((and (semver-compare V Min) (not Max)) T) ]
