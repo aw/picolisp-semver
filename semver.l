@@ -33,7 +33,7 @@
     ((and (car R) (cadr R) (caddr R)) T) ]
 
 [de sort-versions (L)
-  (by cmp-versions sort (mapcar semver-format L)) ]
+  (by cmp-versions sort L) ]
 
 [de to-string (L)
   (glue "." L) ]
@@ -61,7 +61,7 @@
     (cmp-lists R) ]
 
 [de semver-sort (L S?)
-  (let V (sort-versions L)
+  (let V (sort-versions (mapcar semver-format L))
     (if S?
         (mapcar to-string V)
         V ]
