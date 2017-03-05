@@ -5,7 +5,7 @@
 # Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
 (local MODULE_INFO <=> cmp-versions cmp-lists sort-versions to-string to-version)
-(local semver-cmp semver-format semver-compare semver-compare-slow semver-sort)
+(local semver-cmp semver-format semver-compare semver-sort)
 
 (load (pack (car (file)) "module.l"))
 
@@ -23,9 +23,10 @@
     ((> A B) T) ]
 
 [de cmp-versions (V1 V2)
-  (cond
-    ((and (= (car V1) (car V2)) (= (cadr V1) (cadr V2)) (= (caddr V1) (caddr V2))) 0)
-    ((or  (> (car V1) (car V2)) (> (cadr V1) (cadr V2)) (> (caddr V1) (caddr V2))) T) ]
+  (list
+    (<=> (car V1) (car V2))
+    (<=> (cadr V1) (cadr V2))
+    (<=> (caddr V1) (caddr V2)) ]
 
 [de cmp-lists (R)
   (cond
@@ -44,20 +45,12 @@
 ### public
 
 [de semver-cmp (V1 V2)
-  (list
-    (<=> (car V1) (car V2))
-    (<=> (cadr V1) (cadr V2))
-    (<=> (caddr V1) (caddr V2)) ]
+  (cmp-versions V1 V2) ]
 
 [de semver-format (S)
   (mapcar format (head 3 (to-version S))) ]
 
 [de semver-compare (A B)
-  (let (V1 (semver-format A)
-        V2 (semver-format B) )
-    (cmp-versions V1 V2) ]
-
-[de semver-compare-slow (A B)
   (let R (semver-cmp
             (semver-format A)
             (semver-format B) )

@@ -22,8 +22,7 @@ It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 | :---- | :---- | :---- | :---- |
 | `semver-format` | Formats a version string into a list of integers | List of integers | `(1 4 2)` |
 | `semver-cmp` | Compares two lists of integers | List containing NIL, 0 or T | `(NIL 0 T)` |
-| `semver-compare` | Compares two version strings | NIL, 0, or T | `NIL` |
-| `semver-compare-slow` | Compares two version strings using the spaceship `<=>` | NIL, 0, or T | `T` |
+| `semver-compare` | Compares two version strings using the spaceship `<=>` | NIL, 0, or T | `T` |
 | `semver-sort` | Sorts a list of version strings | List of integers or strings | `((1 3 0) (1 4 0) (1 6 0))` or `("1.3.0" "1.4.0" "1.6.0")` |
 
 Version comparison is always from left to right.
