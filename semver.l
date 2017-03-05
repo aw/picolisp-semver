@@ -47,7 +47,7 @@
     (<=> (caddr V1) (caddr V2)) ]
 
 [de semver-format (Version)
-  (mapcar format (head 3 (mapcan '((S) (split S "-")) (split (chop Version) ".")))) ]
+  (mapcar format (head 3 (split (chop Version) '. '-))) ]
 
 [de semver-compare (A B)
   (let (V1 (semver-format A)
