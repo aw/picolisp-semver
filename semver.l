@@ -55,7 +55,9 @@
     (cmp-versions V1 V2) ]
 
 [de semver-compare-slow (A B)
-  (let R (semver-cmp (semver-format A) (semver-format B))
+  (let R (semver-cmp
+            (semver-format A)
+            (semver-format B) )
     (cmp-lists R) ]
 
 [de semver-sort (L S?)
