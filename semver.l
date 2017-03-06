@@ -60,7 +60,6 @@
       (let (A (semver-format V1)
             B (semver-format V2)
             R (sort-versions (list A B)) )
-
         (cmp-lists A B (cadr R)) ]
 
 [de semver-sort (L S?)
