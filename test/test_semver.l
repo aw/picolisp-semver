@@ -10,6 +10,11 @@
   (assert-equal '(0 0 0) (cmp-versions (1 4 2) (1 4 2)) "[versions] Ensure (a = b = 0)")
   (assert-equal '(0 T 0) (cmp-versions (1 5 2) (1 4 2)) "[versions] Ensure (a > b = T)") ]
 
+[de test-internal-cmp-lists ()
+  (assert-nil (cmp-lists (1 4 0) (1 5 0) (1 5 0)) "[lists] Ensure (b = c = NIL)")
+  (assert-equal 0 (cmp-lists (1 6 0) (1 6 0) (1 7 0)) "[lists] Ensure (a = b = 0)")
+  (assert-t (cmp-lists (1 4 0) (1 5 0) (1 3 0)) "[lists] Ensure (b != c = T)") ]
+
 [de test-internal-sort-versions ()
   (assert-equal '((1 3 0) (1 4 0) (1 6 0)) (sort-versions '((1 6 0) (1 3 0) (1 4 0))) "Sort lists of integers") ]
 
@@ -31,6 +36,7 @@
 
   '(test-internal-cmp)
   '(test-internal-cmp-versions)
+  '(test-internal-cmp-lists)
   '(test-internal-sort-versions)
   '(test-internal-to-string)
   '(test-internal-to-version)
