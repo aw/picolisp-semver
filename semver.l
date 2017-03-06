@@ -55,11 +55,13 @@
   (mapcar format (head 3 (to-version S))) ]
 
 [de semver-compare (V1 V2)
-  (let (A (semver-format V1)
-        B (semver-format V2)
-        R (sort-versions (list A B)) )
+  (if (= V1 V2)
+      0
+      (let (A (semver-format V1)
+            B (semver-format V2)
+            R (sort-versions (list A B)) )
 
-    (cmp-lists A B (cadr R)) ]
+        (cmp-lists A B (cadr R)) ]
 
 [de semver-sort (L S?)
   (let V (sort-versions (mapcar semver-format L))
