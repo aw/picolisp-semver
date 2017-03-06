@@ -28,11 +28,10 @@
     (<=> (cadr V1) (cadr V2))
     (<=> (caddr V1) (caddr V2)) ]
 
-[de cmp-lists (R)
-  (or (=T (car R))
-      (and (=0 (car R)) (=0 (cadr R)) (=0 (caddr R)))
-      (and (car R) (=T (cadr R)))
-      (and (car R) (cadr R) (=T (caddr R))) ]
+[de cmp-lists (A B C)
+  (if (= A B)
+      0
+      (<> B C) ]
 
 [de cmp-range (A B Max)
   (or (and A (not B))
@@ -55,11 +54,12 @@
 [de semver-format (S)
   (mapcar format (head 3 (to-version S))) ]
 
-[de semver-compare (A B)
-  (let R (semver-cmp
-            (semver-format A)
-            (semver-format B) )
-    (cmp-lists R) ]
+[de semver-compare (V1 V2)
+  (let (A (semver-format V1)
+        B (semver-format V2)
+        R (sort-versions (list A B)) )
+
+    (cmp-lists A B (cadr R)) ]
 
 [de semver-sort (L S?)
   (let V (sort-versions (mapcar semver-format L))
