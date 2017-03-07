@@ -37,9 +37,6 @@
   (or (and A (not B))
       (and A (not Max)) ]
 
-[de sort-versions (L)
-  (by cmp-versions sort L) ]
-
 [de to-string (L)
   (glue "." L) ]
 
@@ -59,11 +56,11 @@
       0
       (let (A (semver-format V1)
             B (semver-format V2)
-            R (sort-versions (list A B)) )
+            R (sort (list A B)) )
         (cmp-lists A B (cadr R)) ]
 
 [de semver-sort (L S?)
-  (let V (sort-versions (mapcar semver-format L))
+  (let V (sort (mapcar semver-format L))
     (if S?
         (mapcar to-string V)
         V ]

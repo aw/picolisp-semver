@@ -15,9 +15,6 @@
   (assert-equal 0 (cmp-lists (1 6 0) (1 6 0) (1 7 0)) "[lists] Ensure (a = b = 0)")
   (assert-t (cmp-lists (1 4 0) (1 5 0) (1 3 0)) "[lists] Ensure (b != c = T)") ]
 
-[de test-internal-sort-versions ()
-  (assert-equal '((1 3 0) (1 4 0) (1 6 0)) (sort-versions '((1 6 0) (1 3 0) (1 4 0))) "Sort lists of integers") ]
-
 [de test-internal-to-string ()
   (assert-equal "1.4.2" (to-string (1 4 2)) "Convert an integer list to a string") ]
 
@@ -37,7 +34,6 @@
   '(test-internal-cmp)
   '(test-internal-cmp-versions)
   '(test-internal-cmp-lists)
-  '(test-internal-sort-versions)
   '(test-internal-to-string)
   '(test-internal-to-version)
   '(test-semver-format)
@@ -51,7 +47,7 @@
   '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "Is 1.4.2 = 1.4.2 ?")
   '(assert-equal 0 (semver-compare "1.4.2-alpha1" "1.4.2-alpha2") "Is 1.4.2-alpha1 = 1.4.2-alpha2 (yes) ?")
   '(assert-equal 0 (semver-compare "1.4.2-beta1" "1.4.2-beta1") "Is 1.4.2-beta1 = 1.4.2-beta1 ?")
-  '(assert-equal '((1 3 0) (1 4 0) (1 6 0)) (semver-sort '("1.4.0" "1.6.0" "1.3.0")) "[integers] Sort a list of version strings")
+  '(assert-equal '((1 3 0) (1 4 0) (1 6 0) (2 0 0) (4 2 0) (4 3 1) (4 3 2)) (semver-sort '("1.4.0" "2.0.0" "4.3.2" "4.3.1" "4.2.0" "1.6.0" "1.3.0")) "[integers] Sort a list of version strings")
   '(assert-equal '("1.3.0" "1.4.0" "1.6.0") (semver-sort '("1.4.0" "1.6.0" "1.3.0") T) "[strings] Sort a list of version strings") ]
 
 [execute
