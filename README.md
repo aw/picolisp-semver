@@ -11,9 +11,12 @@ It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 
 # Requirements
 
-  * [PicoLisp](http://picolisp.com) 32-bit or 64-bit v16.12+
+  * [PicoLisp](http://picolisp.com) 32-bit or 64-bit v16.6+
+  * Tested up to PicoLisp v16.12
 
 # Usage
+
+> **Note:** Namespaces can be disabled by setting the environment variable `PIL_NO_NAMESPACES=true`
 
   * Include `semver.l` in your application: `(load "semver.l")`
   * Use one of the 5 public functions listed below
@@ -21,8 +24,8 @@ It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 | Function | Description | Returns | Example |
 | :---- | :---- | :---- | :---- |
 | `semver-format` | Formats a version string into a list of integers | List of integers | `(1 4 2)` |
-| `semver-cmp` | Compares two lists of integers | List containing NIL, 0 or T | `(NIL 0 T)` |
-| `semver-compare` | Compares two version strings using the spaceship `<=>` | NIL, 0, or T | `T` |
+| `semver-cmp` | Compares two lists of integers using the spaceship `<=>` | List containing NIL, 0 or T | `(NIL 0 T)` |
+| `semver-compare` | Compares two version strings | NIL, 0, or T | `T` |
 | `semver-sort` | Sorts a list of version strings | List of integers or strings | `((1 3 0) (1 4 0) (1 6 0))` or `("1.3.0" "1.4.0" "1.6.0")` |
 | `semver-satisfies` | Returns whether a version is satisfied by a range | NIL or T | `NIL` or `T` |
 

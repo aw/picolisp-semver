@@ -4,8 +4,11 @@
 #
 # Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
-(local MODULE_INFO <=> cmp-versions cmp-lists cmp-range sort-versions to-string to-version)
-(local semver-cmp semver-format semver-compare semver-sort semver-satisfies)
+(unless (sys "PIL_NO_NAMESPACES")
+  (when symbols (symbols 'semver 'pico))
+
+  (local MODULE_INFO <=> semver-internal-cmp-versions semver-internal-cmp-lists semver-internal-cmp-range semver-internal-to-string semver-internal-to-version)
+  (local semver-cmp semver-format semver-compare semver-sort semver-satisfies) )
 
 (load (pack (car (file)) "module.l"))
 
@@ -22,34 +25,34 @@
     ((= A B) 0)
     ((> A B) T) ]
 
-[de cmp-versions (V1 V2)
+[de semver-internal-cmp-versions (V1 V2)
   (list
     (<=> (car V1) (car V2))
     (<=> (cadr V1) (cadr V2))
     (<=> (caddr V1) (caddr V2)) ]
 
-[de cmp-lists (A B C)
+[de semver-internal-cmp-lists (A B C)
   (if (= A B)
       0
       (<> B C) ]
 
-[de cmp-range (A B Max)
+[de semver-internal-cmp-range (A B Max)
   (or (and A (not B))
       (and A (not Max)) ]
 
-[de to-string (L)
+[de semver-internal-to-string (L)
   (glue "." L) ]
 
-[de to-version (S)
+[de semver-internal-to-version (S)
   (split (chop S) '. '-) ]
 
 ### public
 
 [de semver-cmp (V1 V2)
-  (cmp-versions V1 V2) ]
+  (semver-internal-cmp-versions V1 V2) ]
 
 [de semver-format (S)
-  (mapcar format (head 3 (to-version S))) ]
+  (mapcar format (head 3 (semver-internal-to-version S))) ]
 
 [de semver-compare (V1 V2)
   (if (= V1 V2)
@@ -57,12 +60,12 @@
       (let (A (semver-format V1)
             B (semver-format V2)
             R (sort (list A B)) )
-        (cmp-lists A B (cadr R)) ]
+        (semver-internal-cmp-lists A B (cadr R)) ]
 
 [de semver-sort (L S?)
   (let V (sort (mapcar semver-format L))
     (if S?
-        (mapcar to-string V)
+        (mapcar semver-internal-to-string V)
         V ]
 
 [de semver-satisfies (Ver Min Max)
@@ -70,4 +73,4 @@
     (or (nor Min Max)
         (let (A (semver-compare Ver Min)
               B (semver-compare Ver Max) )
-          (cmp-range A B Max) ]
+          (semver-internal-cmp-range A B Max) ]

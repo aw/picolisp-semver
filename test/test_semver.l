@@ -6,20 +6,20 @@
   (assert-t (<=> 3 2) "Ensure (a > b = T)") ]
 
 [de test-internal-cmp-versions ()
-  (assert-equal '(NIL 0 NIL) (cmp-versions (0 4 0) (1 4 2)) "[versions] Ensure (a < b = NIL)")
-  (assert-equal '(0 0 0) (cmp-versions (1 4 2) (1 4 2)) "[versions] Ensure (a = b = 0)")
-  (assert-equal '(0 T 0) (cmp-versions (1 5 2) (1 4 2)) "[versions] Ensure (a > b = T)") ]
+  (assert-equal '(NIL 0 NIL) (semver-internal-cmp-versions (0 4 0) (1 4 2)) "[versions] Ensure (a < b = NIL)")
+  (assert-equal '(0 0 0) (semver-internal-cmp-versions (1 4 2) (1 4 2)) "[versions] Ensure (a = b = 0)")
+  (assert-equal '(0 T 0) (semver-internal-cmp-versions (1 5 2) (1 4 2)) "[versions] Ensure (a > b = T)") ]
 
 [de test-internal-cmp-lists ()
-  (assert-nil (cmp-lists (1 4 0) (1 5 0) (1 5 0)) "[lists] Ensure (b = c = NIL)")
-  (assert-equal 0 (cmp-lists (1 6 0) (1 6 0) (1 7 0)) "[lists] Ensure (a = b = 0)")
-  (assert-t (cmp-lists (1 4 0) (1 5 0) (1 3 0)) "[lists] Ensure (b != c = T)") ]
+  (assert-nil (semver-internal-cmp-lists (1 4 0) (1 5 0) (1 5 0)) "[lists] Ensure (b = c = NIL)")
+  (assert-equal 0 (semver-internal-cmp-lists (1 6 0) (1 6 0) (1 7 0)) "[lists] Ensure (a = b = 0)")
+  (assert-t (semver-internal-cmp-lists (1 4 0) (1 5 0) (1 3 0)) "[lists] Ensure (b != c = T)") ]
 
 [de test-internal-to-string ()
-  (assert-equal "1.4.2" (to-string (1 4 2)) "Convert an integer list to a string") ]
+  (assert-equal "1.4.2" (semver-internal-to-string (1 4 2)) "Convert an integer list to a string") ]
 
 [de test-internal-to-version ()
-  (assert-equal '(("1") ("4") ("2") ("a" "l" "p" "h" "a" "1")) (to-version "1.4.2-alpha1") "Convert a string to an integer list") ]
+  (assert-equal '(("1") ("4") ("2") ("a" "l" "p" "h" "a" "1")) (semver-internal-to-version "1.4.2-alpha1") "Convert a string to an integer list") ]
 
 [de test-semver-format ()
   (assert-equal (1 4 2) (semver-format "1.4.2") "Convert a version string to a list")
