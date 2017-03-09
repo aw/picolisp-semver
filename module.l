@@ -1,6 +1,6 @@
 [de MODULE_INFO
   ("name"       "picolisp-semver")
-  ("version"    "0.8.0")
+  ("version"    "0.7.0")
   ("summary"    "PicoLisp SemVer")
   ("source"     "https://jidoteki.com")
   ("author"     "Alexander Williams")
