@@ -1,6 +1,6 @@
 # PicoLisp SemVer
 
-[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Build Status](https://travis-ci.org/aw/picolisp-semver.svg?branch=master)](https://travis-ci.org/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps] picolisp--unit-v2.0.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)
+[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Build Status](https://travis-ci.org/aw/picolisp-semver.svg?branch=master)](https://travis-ci.org/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps]&#32;picolisp--unit-v2.1.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)
 
 [SemVer 2.0.0](http://semver.org) library for PicoLisp
 
@@ -16,7 +16,7 @@ It drops pre-release, build, metadata, and special extensions (ex: `-alpha.1`).
 
 # Usage
 
-> **Note:** Namespaces can be disabled by setting the environment variable `PIL_NO_NAMESPACES=true`
+> **Note:** Namespaces can be disabled by setting the environment variable `PIL_NAMESPACES=false`
 
   * Include `semver.l` in your application: `(load "semver.l")`
   * Use one of the 5 public functions listed below

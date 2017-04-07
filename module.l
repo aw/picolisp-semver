@@ -1,6 +1,6 @@
 [de MODULE_INFO
   ("name"       "picolisp-semver")
-  ("version"    "0.7.0")
+  ("version"    "0.8.0")
   ("summary"    "PicoLisp SemVer")
   ("source"     "https://jidoteki.com")
   ("author"     "Alexander Williams")
@@ -8,4 +8,4 @@
   ("copyright"  "(c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>")
   ("install"    "make")
   ("requires"
-    ("picolisp-unit"    "v2.0.0"    "https://github.com/aw/picolisp-unit.git") ]
+    ("picolisp-unit"    "v2.1.0"    "https://github.com/aw/picolisp-unit.git") ]

@@ -4,8 +4,8 @@
 #
 # Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
 
-(unless (sys "PIL_NO_NAMESPACES")
-  (when symbols (symbols 'semver 'pico))
+(unless (= "false" (sys "PIL_NAMESPACES"))
+  (symbols 'semver 'pico)
 
   (local MODULE_INFO <=> semver-internal-cmp-versions semver-internal-cmp-lists semver-internal-cmp-range semver-internal-to-string semver-internal-to-version)
   (local semver-cmp semver-format semver-compare semver-sort semver-satisfies) )
@@ -24,6 +24,11 @@
     ((< A B) NIL)
     ((= A B) 0)
     ((> A B) T) ]
+
+[de <=> @
+  (if (pass =)
+      0
+      (pass >) ]
 
 [de semver-internal-cmp-versions (V1 V2)
   (list

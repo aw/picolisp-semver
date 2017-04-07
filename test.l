@@ -1,7 +1,7 @@
 #!/usr/bin/env pil
 
-(unless (sys "PIL_NO_NAMESPACES")
-  (when symbols (symbols 'semver 'pico)) )
+(unless (= "false" (sys "PIL_NAMESPACES"))
+  (symbols 'semver 'pico) )
 
 (load (pack (car (file)) ".modules/picolisp-unit/HEAD/unit.l"))
 

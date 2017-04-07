@@ -6,7 +6,7 @@ REPO_PREFIX ?= https://github.com/aw
 # Unit testing
 TEST_REPO = $(REPO_PREFIX)/picolisp-unit.git
 TEST_DIR = $(PIL_MODULE_DIR)/picolisp-unit/HEAD
-TEST_REF = v2.0.0
+TEST_REF = v2.1.0
 
 # Generic
 .PHONY: check run-tests clean
@@ -20,7 +20,7 @@ $(TEST_DIR):
 check: $(TEST_DIR) run-tests
 
 run-tests:
-		PIL_NO_NAMESPACES=true ./test.l
+		PIL_NAMESPACES=false ./test.l
 
 clean:
 		rm -rf $(TEST_DIR)
