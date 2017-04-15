@@ -25,10 +25,11 @@
     ((= A B) 0)
     ((> A B) T) ]
 
-[de <=> @
-  (if (pass =)
-      0
-      (pass >) ]
+# unused alternative
+# [de <=> @
+#   (if (pass =)
+#       0
+#       (pass >) ]
 
 [de semver-internal-cmp-versions (V1 V2)
   (list
