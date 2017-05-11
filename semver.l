@@ -31,42 +31,42 @@
 #       0
 #       (pass >) ]
 
-[de semver-internal-cmp-versions (V1 V2)
+[de semver-internal-cmp-versions ()
   (list
     (<=> (car V1) (car V2))
     (<=> (cadr V1) (cadr V2))
     (<=> (caddr V1) (caddr V2)) ]
 
-[de semver-internal-cmp-lists (A B C)
+[de semver-internal-cmp-lists ()
   (if (= A B)
       0
       (<> B C) ]
 
-[de semver-internal-cmp-range (A B Max)
+[de semver-internal-cmp-range ()
   (or (and A (not B))
       (and A (not Max)) ]
 
-[de semver-internal-to-string (L)
-  (glue "." L) ]
+[de semver-internal-to-string @
+  (pass glue ".") ]
 
-[de semver-internal-to-version (S)
+[de semver-internal-to-version ()
   (split (chop S) '. '-) ]
 
 ### public
 
 [de semver-cmp (V1 V2)
-  (semver-internal-cmp-versions V1 V2) ]
+  (semver-internal-cmp-versions) ]
 
 [de semver-format (S)
-  (mapcar format (head 3 (semver-internal-to-version S))) ]
+  (mapcar format (head 3 (semver-internal-to-version))) ]
 
 [de semver-compare (V1 V2)
   (if (= V1 V2)
       0
       (let (A (semver-format V1)
             B (semver-format V2)
-            R (sort (list A B)) )
-        (semver-internal-cmp-lists A B (cadr R)) ]
+            C (cadr (sort (list A B))) )
+        (semver-internal-cmp-lists) ]
 
 [de semver-sort (L S?)
   (let V (sort (mapcar semver-format L))
@@ -79,4 +79,4 @@
     (or (nor Min Max)
         (let (A (semver-compare Ver Min)
               B (semver-compare Ver Max) )
-          (semver-internal-cmp-range A B Max) ]
+          (semver-internal-cmp-range) ]
