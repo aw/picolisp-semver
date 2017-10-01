@@ -44,6 +44,8 @@
   '(assert-t   (semver-compare "1.4.3" "1.4.2") "Is 1.4.4 > 1.4.2 ?")
   '(assert-t   (semver-compare "1.5.2" "1.4.2") "Is 1.5.2 > 1.4.2 ?")
   '(assert-t   (semver-compare "2.4.2" "1.4.2") "Is 2.4.2 > 1.4.2 ?")
+  '(assert-equal 0 (semver-compare "v3.3.0" "3.3.0") "Is v3.3.0 = 3.3.0 ?")
+  '(assert-equal 0 (semver-compare "v.3.3.0" "3.3.0") "Is v.3.3.0 = 3.3.0 ?")
   '(assert-equal 0 (semver-compare "1.4.2" "1.4.2") "Is 1.4.2 = 1.4.2 ?")
   '(assert-equal 0 (semver-compare "1.4.2-alpha1" "1.4.2-alpha2") "Is 1.4.2-alpha1 = 1.4.2-alpha2 (yes) ?")
   '(assert-equal 0 (semver-compare "1.4.2-beta1" "1.4.2-beta1") "Is 1.4.2-beta1 = 1.4.2-beta1 ?")

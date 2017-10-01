@@ -50,7 +50,7 @@
   (glue "." L) ]
 
 [de semver-internal-to-version (S)
-  (split (chop S) '. '-) ]
+  (clip (split (chop S) '. '- 'v)) ]
 
 ### public
 
