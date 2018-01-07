@@ -7,6 +7,7 @@
   * Validates and compares **Major.Minor.Patch** versions (ex: `"1.0.0"`)
   * Drops pre-release, build, metadata, and special extensions (ex: `1.1.0-alpha.1 -> 1.1.0`)
   * Drops versions prefixed with `v` or `v.` (ex: `v3.3.0 -> 3.3.0`)
+  * Invalidates incorrectly formatted versions (ex: `"1.invalid.0" -> NIL`)
 
 ![SemVer PicoLisp test output](https://cloud.githubusercontent.com/assets/153401/23364395/ceda769a-fcf6-11e6-9bf6-b7b0b8187f61.png)
 
@@ -29,6 +30,8 @@
 | `semver-compare` | Compares two version strings | NIL, 0, or T | `T` |
 | `semver-sort` | Sorts a list of version strings | List of integers or strings | `((1 3 0) (1 4 0) (1 6 0))` or `("1.3.0" "1.4.0" "1.6.0")` |
 | `semver-satisfies` | Returns whether a version is satisfied by a range | NIL or T | `NIL` or `T` |
+
+Invalid versions are returned as `NIL`.
 
 Version comparison is always from left to right.
 

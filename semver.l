@@ -58,7 +58,8 @@
   (semver-internal-cmp-versions V1 V2) ]
 
 [de semver-format (S)
-  (mapcar format (head 3 (semver-internal-to-version S))) ]
+  (let R (mapcar format (head 3 (semver-internal-to-version S)))
+    (when (full R) R) ]
 
 [de semver-compare (V1 V2)
   (if (= V1 V2)
