@@ -156,4 +156,4 @@ If you want to improve this library, please make a pull-request.
 
 [MIT License](LICENSE)
 
-Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
+Copyright (c) 2017-2018 Alexander Williams, Unscramble <license@unscramble.jp>

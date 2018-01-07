@@ -2,7 +2,9 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2017 Alexander Williams, Unscramble <license@unscramble.jp>
+# Copyright (c) 2017-2018 Alexander Williams, Unscramble <license@unscramble.jp>
+#
+# Semver 2.0.0 compliant: https://semver.org/spec/v2.0.0.html#semantic-versioning-specification-semver
 
 (unless (= "false" (sys "PIL_NAMESPACES"))
   (symbols 'semver 'pico)
@@ -49,14 +51,21 @@
 [de semver-internal-to-string (L)
   (glue "." L) ]
 
+# pre-release and build metadata
+# https://semver.org/spec/v2.0.0.html#spec-item-9
+# https://semver.org/spec/v2.0.0.html#spec-item-10
 [de semver-internal-to-version (S)
   (clip (split (chop S) '. '- 'v '+)) ]
 
 ### public
 
+# public api
+# https://semver.org/spec/v2.0.0.html#spec-item-1
 [de semver-cmp (V1 V2)
   (semver-internal-cmp-versions V1 V2) ]
 
+# version number format
+# https://semver.org/spec/v2.0.0.html#spec-item-2
 [de semver-format (S)
   (let R (mapcar format (head 3 (semver-internal-to-version S)))
     (when (full R) R) ]
@@ -69,6 +78,8 @@
             R (sort (list A B)) )
         (semver-internal-cmp-lists A B (cadr R)) ]
 
+# precedence
+# https://semver.org/spec/v2.0.0.html#spec-item-11
 [de semver-sort (L S?)
   (let V (sort (mapcar semver-format L))
     (if S?
