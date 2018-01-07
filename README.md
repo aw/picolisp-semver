@@ -5,7 +5,8 @@
 [SemVer 2.0.0](http://semver.org) library for PicoLisp
 
   * Validates and compares **Major.Minor.Patch** versions (ex: `"1.0.0"`)
-  * Drops pre-release, build, metadata, and special extensions (ex: `1.1.0-alpha.1 -> 1.1.0`)
+  * Drops pre-release extensions (ex: `1.1.0-alpha.1 -> 1.1.0`)
+  * Drops build metadata extensions (ex: `2.2.0+buildmetadata -> 2.0.0`)
   * Drops versions prefixed with `v` or `v.` (ex: `v3.3.0 -> 3.3.0`)
   * Invalidates incorrectly formatted versions (ex: `"1.invalid.0" -> NIL`)
 
