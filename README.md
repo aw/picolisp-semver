@@ -15,7 +15,7 @@
 # Requirements
 
   * [PicoLisp](http://picolisp.com) 32-bit or 64-bit v16.6+
-  * Tested up to PicoLisp v17.12
+  * Tested up to PicoLisp v18.12
 
 # Usage
 
