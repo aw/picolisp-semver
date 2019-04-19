@@ -2,15 +2,9 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2017-2018 Alexander Williams, Unscramble <license@unscramble.jp>
+# Copyright (c) 2017-2019 Alexander Williams, Unscramble <license@unscramble.jp>
 #
 # Semver 2.0.0 compliant: https://semver.org/spec/v2.0.0.html#semantic-versioning-specification-semver
-
-(unless (= "false" (sys "PIL_NAMESPACES"))
-  (symbols 'semver 'pico)
-
-  (local MODULE_INFO <=> semver-internal-cmp-versions semver-internal-cmp-lists semver-internal-cmp-range semver-internal-to-string semver-internal-to-version)
-  (local semver-cmp semver-format semver-compare semver-sort semver-satisfies) )
 
 (load (pack (car (file)) "module.l"))
 
