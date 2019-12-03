@@ -1,6 +1,6 @@
 # PicoLisp SemVer
 
-[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Build Status](https://travis-ci.org/aw/picolisp-semver.svg?branch=master)](https://travis-ci.org/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps]&#32;picolisp--unit-v3.0.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)  ![Build status](https://github.com/aw/picolisp-semver/workflows/CI/badge.svg?branch=master)
+[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps]&#32;picolisp--unit-v3.0.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)  ![Build status](https://github.com/aw/picolisp-semver/workflows/CI/badge.svg?branch=master)
 
 [SemVer 2.0.0](http://semver.org) library for PicoLisp
 
@@ -15,7 +15,7 @@
 # Requirements
 
   * [PicoLisp](http://picolisp.com) 32-bit or 64-bit v16.6+
-  * Tested up to PicoLisp v18.12
+  * Tested up to PicoLisp v19.11.25, [see test runs](https://github.com/aw/picolisp-semver/commit/4daf068c7fd61766926bd0124571631f368a3291/checks)
 
 # Usage
 
