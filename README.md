@@ -1,6 +1,6 @@
 # PicoLisp SemVer
 
-[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Build Status](https://travis-ci.org/aw/picolisp-semver.svg?branch=master)](https://travis-ci.org/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps]&#32;picolisp--unit-v3.0.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)
+[![GitHub release](https://img.shields.io/github/release/aw/picolisp-semver.svg)](https://github.com/aw/picolisp-semver) [![Build Status](https://travis-ci.org/aw/picolisp-semver.svg?branch=master)](https://travis-ci.org/aw/picolisp-semver) [![Dependency](https://img.shields.io/badge/[deps]&#32;picolisp--unit-v3.0.0-ff69b4.svg)](https://github.com/aw/picolisp-unit.git)  ![Build status](https://github.com/aw/picolisp-semver/workflows/CI/badge.svg?branch=master)
 
 [SemVer 2.0.0](http://semver.org) library for PicoLisp
 
