@@ -15,7 +15,7 @@
 # Requirements
 
   * [PicoLisp](http://picolisp.com) 32-bit or 64-bit `v16.6+`
-  * Tested up to PicoLisp `v19.11.25`, [see test runs](https://github.com/aw/picolisp-semver/commit/4daf068c7fd61766926bd0124571631f368a3291/checks)
+  * Tested up to PicoLisp `vv20.6.29`, [see test runs](https://github.com/aw/picolisp-semver/commit/4daf068c7fd61766926bd0124571631f368a3291/checks)
 
 # Usage
 
@@ -156,4 +156,4 @@ If you want to improve this library, please make a pull-request.
 
 [MIT License](LICENSE)
 
-Copyright (c) 2017-2019 Alexander Williams, Unscramble <license@unscramble.jp>
+Copyright (c) 2017-2020 Alexander Williams, Unscramble <license@unscramble.jp>

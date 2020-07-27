@@ -2,7 +2,7 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2017-2019 Alexander Williams, Unscramble <license@unscramble.jp>
+# Copyright (c) 2017-2020 Alexander Williams, Unscramble <license@unscramble.jp>
 #
 # Semver 2.0.0 compliant: https://semver.org/spec/v2.0.0.html#semantic-versioning-specification-semver
 
